@@ -2,7 +2,7 @@
 
 var amqp = require('amqplib/callback_api');
 
-amqp.connect('amqp://hatiolab:hatiolab@mq.hatiolab.com', function(err, conn) {
+amqp.connect('amqp://hatiolab:hatiolab@mq.hatiolab.com:5672', function(err, conn) {
   if(err) {
     console.error(err);
     return;

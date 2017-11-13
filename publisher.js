@@ -9,15 +9,15 @@ amqp.connect('amqp://hatiolab:hatiolab@mq.hatiolab.com', function(err, conn) {
   }
 
   conn.createChannel(function (err, ch) {
-    var q = 'amp.topic.hello';
+    var ex = 'amq.topic';
 
-    ch.assertQueue(q, { durable: false });
+    ch.assertExchange(ex, 'topic', { durable: true });
 
-    console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", q);
-    var count = 0;
-    ch.consume(q, function(msg) {
-      console.log(" [x] Received %s(%d)", msg.content.toString(), count++);
-    }, {noAck: true});        
+    setInterval(() => {
+      let x = Math.random() * 500;
+      let y = Math.random() * 500;
+      ch.publish(ex, 'location', new Buffer('{"x":' + x + ', "y":' + y + '}'));
+    }, 500);
   });
 
   setTimeout(function() { conn.close(); process.exit(0) }, 500000);  

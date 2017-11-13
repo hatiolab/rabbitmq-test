@@ -19,6 +19,6 @@ amqp.connect('amqp://hatiolab:hatiolab@mq.hatiolab.com', function(err, conn) {
     console.log(" [x] Sent 'Hello World!'");
   });
 
-  setTimeout(function() { conn.close(); process.exit(0) }, 5000);  
+  setTimeout(function() { conn.close(); process.exit(0) }, 500000);  
 });
 
