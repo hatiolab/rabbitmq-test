@@ -14,12 +14,10 @@ amqp.connect('amqp://hatiolab:hatiolab@mq.hatiolab.com', function(err, conn) {
     ch.assertExchange(ex, 'topic', { durable: true });
 
     setInterval(() => {
-      let x = Math.random() * 500;
-      let y = Math.random() * 500;
+      let x = Math.random() * 500 + 200;
+      let y = Math.random() * 500 + 200;
       ch.publish(ex, 'location', new Buffer('{"x":' + x + ', "y":' + y + '}'));
     }, 500);
   });
-
-  setTimeout(function() { conn.close(); process.exit(0) }, 500000);  
 });
 
