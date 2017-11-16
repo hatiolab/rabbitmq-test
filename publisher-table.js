@@ -18,7 +18,7 @@ amqp.connect('amqp://hatiolab:hatiolab@mq.hatiolab.com', function(err, conn) {
       let table = []
       for(let i = 0;i < 4;i++) {
         table.push({
-          qoodQty: Math.floor(Math.random() * 500),
+          goodQty: Math.floor(Math.random() * 500),
           badQty: Math.floor(Math.random() * 50)
         })
       }
