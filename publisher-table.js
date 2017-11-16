@@ -24,7 +24,7 @@ amqp.connect('amqp://hatiolab:hatiolab@mq.hatiolab.com', function(err, conn) {
       }
 
       ch.publish(ex, 'table', new Buffer(JSON.stringify(table)));
-    }, 5000);
+    }, 1000);
   });
 });
 
